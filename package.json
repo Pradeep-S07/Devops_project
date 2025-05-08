@@ -1,0 +1,15 @@
+{
+    "name": "my-web-app",
+    "version": "1.0.0",
+    "description": "Simple web app with Jenkins automation",
+    "main": "app.js",
+    "scripts": {
+      "start": "node app.js",
+      "test": "echo \"No tests yet\" && exit 0",
+      "lint": "echo \"No lint rules yet\" && exit 0"
+    },
+    "dependencies": {
+      "express": "^4.18.2"
+    }
+  }
+  
