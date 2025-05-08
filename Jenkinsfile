@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/Pradeep-S07/Devops_project.git'
+                git url: 'https://github.com/Pradeep-S07/Devops_project.git' , branch : 'pradeepnew'
             }
         }
 
