@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Chatbot</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chat-container {
+      width: 360px;
+      height: 600px;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .chat-header {
+      background-color: #5a67d8;
+      color: #fff;
+      padding: 16px;
+      font-size: 1.2em;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      background: #f7f8fa;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .message {
+      max-width: 75%;
+      padding: 10px 14px;
+      margin-bottom: 12px;
+      border-radius: 18px;
+      font-size: 0.95em;
+      line-height: 1.4;
+    }
+
+    .user {
+      align-self: flex-end;
+      background-color: #5a67d8;
+      color: white;
+      border-bottom-right-radius: 0;
+    }
+
+    .bot {
+      align-self: flex-start;
+      background-color: #e2e8f0;
+      color: #2d3748;
+      border-bottom-left-radius: 0;
+    }
+
+    .chat-input {
+      display: flex;
+      border-top: 1px solid #ddd;
+      padding: 12px;
+      background: #fff;
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 10px 14px;
+      border: 1px solid #ccc;
+      border-radius: 18px;
+      outline: none;
+      font-size: 1em;
+    }
+
+    .chat-input button {
+      margin-left: 10px;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 18px;
+      background-color: #5a67d8;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .chat-input button:hover {
+      background-color: #434190;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">🤖 Chat with Bot</div>
+    <div class="chat-messages" id="chat">
+      <div class="message bot">Hello! I'm your assistant. Ask me anything!</div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="input" placeholder="Type a message...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    function sendMessage() {
+      const input = document.getElementById('input');
+      const chat = document.getElementById('chat');
+      const text = input.value.trim();
+      if (!text) return;
+
+      // User message
+      const userMsg = document.createElement('div');
+      userMsg.className = 'message user';
+      userMsg.textContent = text;
+      chat.appendChild(userMsg);
+
+      input.value = '';
+      chat.scrollTop = chat.scrollHeight;
+
+      // Bot reply (simple fake response)
+      setTimeout(() => {
+        const botMsg = document.createElement('div');
+        botMsg.className = 'message bot';
+        botMsg.textContent = getBotReply(text);
+        chat.appendChild(botMsg);
+        chat.scrollTop = chat.scrollHeight;
+      }, 800);
+    }
+
+    function getBotReply(input) {
+      const message = input.toLowerCase();
+      if (message.includes("hello") || message.includes("hi")) {
+        return "Hi there! 👋";
+      } else if (message.includes("your name")) {
+        return "I'm ChatBot, your assistant!";
+      } else if (message.includes("time")) {
+        return "Current time is: " + new Date().toLocaleTimeString();
+      } else {
+        return "Sorry, I don't understand that yet 😅";
+      }
+    }
+  </script>
+</body>
+</html>
