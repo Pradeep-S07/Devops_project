@@ -119,7 +119,7 @@
       const text = input.value.trim();
       if (!text) return;
 
-      // User message
+      
       const userMsg = document.createElement('div');
       userMsg.className = 'message user';
       userMsg.textContent = text;
@@ -127,8 +127,6 @@
 
       input.value = '';
       chat.scrollTop = chat.scrollHeight;
-
-      // Bot reply (simple fake response)
       setTimeout(() => {
         const botMsg = document.createElement('div');
         botMsg.className = 'message bot';
